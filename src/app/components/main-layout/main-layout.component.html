@@ -1,0 +1,60 @@
+<section class="w-full mb-48 pb-48">
+  <div
+    class="w-full h-72"
+    style="
+      background: linear-gradient(
+        113.3deg,
+        rgb(112, 174, 190) -1.8%,
+        rgb(60, 80, 115) 86.4%
+      );
+    "
+  ></div>
+  <section
+    class="-mt-28 bg-white w-[25rem] py-4 pb-0 px-5 rounded-md shadow-md mx-auto h-44"
+  >
+    <nav class="border-b-2 border-zinc-100">
+      <ul class="flex justify-between items-center">
+        <li
+          (click)="handleChosenDateTask('yesterday')"
+          class="{{
+            chosenDayTasks == 'yesterday' ? 'nav-active' : ''
+          }} text-zinc-300 font-semibold opacity-100 text-base hover:text-black cursor-pointer"
+        >
+          Yesterday
+        </li>
+        <li
+          (click)="handleChosenDateTask('today')"
+          class="{{
+            chosenDayTasks == 'today' ? 'nav-active' : ''
+          }} text-zinc-300 font-semibold text-base  cursor-pointer"
+        >
+          Today's Task
+        </li>
+
+        <p-button (onClick)="handleCreateTask(true)">
+          <li
+            class="text-zinc-300 font-semibold text-base hover:text-black cursor-pointer flex justify-center items-center gap-1"
+          >
+            Settings <i class="small material-icons">settings</i>
+          </li>
+
+          <app-modal-small [modalTaskData]="dataToModalTask">
+            <div>
+              <h1>settings</h1>
+            </div>
+          </app-modal-small>
+        </p-button>
+      </ul>
+    </nav>
+
+    <app-today-task *ngIf="chosenDayTasks == 'today'"></app-today-task>
+    <app-yesterday-task
+      *ngIf="chosenDayTasks == 'yesterday'"
+    ></app-yesterday-task>
+  </section>
+
+  <section class="mt-10 bg-transparent w-[25rem] rounded-md mx-auto mb-32">
+    <app-task (click)="destroyTask()"></app-task>
+    <app-task></app-task>
+  </section>
+</section>

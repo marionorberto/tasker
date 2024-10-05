@@ -1,0 +1,55 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+@font-face {
+  font-family: "Monserat";
+  src: url("./assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Monserat Italic";
+  src: url("./assets/fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf");
+}
+
+@tailwind base;
+
+@layer tailwind-base, primeng, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+@layer reset {
+  :host ::ng-deep .p-calendar {
+    background: #fff;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Monserat", "Helvetica Neue", sans-serif;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}

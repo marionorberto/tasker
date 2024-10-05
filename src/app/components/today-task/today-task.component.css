@@ -1,0 +1,10 @@
+.nav-active {
+  font-weight: 600;
+  color: #475569;
+}
+
+.number-nav-active {
+  font-weight: 600;
+  background: #475569;
+  color: #fff;
+}

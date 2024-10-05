@@ -1,0 +1,7 @@
+
+pages:
+
+* add list
+* specific day tasks list
+* login
+* register
