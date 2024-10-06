@@ -1,76 +1,23 @@
 <section>
-  <div class="flex justify-between items-center pt-9">
+  <div class="flex justify-between items-center pt-9 -mt-5">
     <div class="flex flex-col justify-center items-start mt-3">
       <div
-        class="text-black font-semibold text-base opacity-40 flex justify-start items-center gap-1 -mt-16"
+        class="text-black font-semibold text-base opacity-40 flex justify-start items-center gap-1"
       >
-        <!-- <input
-          type="date"
-          id="date"
-          #inputDate
-          (change)="onDateChange($event)"
-          class="hidden"
-        />
-        <i
-          (click)="lunchInputDate()"
-          class="text-[17px] material-icons bg-zinc-200 rounded-full h-7 w-7 flex justify-center items-center cursor-pointer hover:bg-slate-300 shadow-sm"
-          >calendar_month</i
-        > -->
         <div class="card flex justify-content-center relative">
           <i
-            (click)="showInputDate()"
-            class="text-[17px] material-icons bg-zinc-200 rounded-full h-7 w-7 flex justify-center items-center cursor-pointer hover:bg-slate-300 shadow-sm"
+            class="text-[17px] material-icons bg-zinc-200 rounded-full h-7 w-7 flex justify-center items-center cursor-pointer hover:bg-slate-300 shadow-sm -mt-8"
             >calendar_month</i
           >
-          <p-calendar
-            #inputCalendar
-            [(ngModel)]="dateCalendar"
-            dateFormat="dd.mm.yy"
-            [inline]="true"
-            class="absolute top-full z-40 bg-white"
-            *ngIf="isInputDateShown"
-          />
         </div>
       </div>
-      <!-- <span class="text-zinc-300 text-[11px]">Wednesday, 11 May</span> -->
     </div>
-    <p-button (onClick)="handleCreateTask(true)">
-      <span
-        class="bg-slate-100 text-slate-600 font-semibold py-1 px-[4px] rounded-md hover:bg-slate-200 flex justify-center items-center shadow-sm -mt-1 text-sm"
-      >
-        <i class="large material-icons">add</i>
-        New Task
-      </span>
-      <app-modal-small [modalTaskData]="dataToModalTask">
-        <section class="px-4 py-3">
-          <form action="">
-            <div>
-              <label for="title" class="font-semibold">Task Title </label>
-              <input
-                type="text"
-                id="title"
-                class="rounded-md w-full h-10 shadow-sm border-[1px] border-zinc-100"
-              />
-            </div>
-            <div class="mt-3">
-              <label for="content" class="font-semibold">Task Content</label>
-              <input
-                type="text"
-                id="content"
-                class="rounded-md w-full h-10 shadow-sm border-[1px] border-zinc-100"
-              />
-            </div>
-            <button
-              type="submit"
-              class="bg-slate-100 text-slate-600 font-semibold py-2 px-3 rounded-md hover:bg-slate-200 flex justify-center items-center shadow-md mt-2 mb-2 w-full"
-            >
-              <i class="large material-icons">add</i>
-              Add
-            </button>
-          </form>
-        </section>
-      </app-modal-small>
-    </p-button>
+    <button
+      class="bg-slate-100 text-slate-600 font-semibold py-1 px-[4px] rounded-md hover:bg-slate-200 flex justify-center items-center shadow-sm mt-1 text-sm"
+    >
+      <i class="large material-icons">add</i>
+      New Task
+    </button>
   </div>
   <nav class="my-8">
     <ul class="flex justify-between items-center">
@@ -95,7 +42,7 @@
           chosenFilterNavegations == 'opened' ? 'nav-active' : ''
         }} flex justify-start item-center gap-2 cursor-pointer hover:font-semibold hover:text-slate-600 text-zinc-300 text-sm"
       >
-        Opened
+        Done
         <span
           class="{{
             chosenFilterNavegations == 'opened' ? 'number-nav-active' : ''
@@ -111,7 +58,7 @@
           chosenFilterNavegations == 'closed' ? 'nav-active' : ''
         }} flex justify-start item-center gap-2 cursor-pointer hover:font-semibold hover:text-slate-600 text-zinc-300 text-sm"
       >
-        Closed
+        Edited
         <span
           class="
           {{ chosenFilterNavegations == 'closed' ? 'number-nav-active' : '' }}

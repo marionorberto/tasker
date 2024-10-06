@@ -1,17 +1,12 @@
 import { Component } from '@angular/core';
-import { ModalSmallComponent } from '../modal-small/modal-small.component';
-
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
 
 
 @Component({
   selector: 'app-task',
   standalone: true,
   imports: [
-    ModalSmallComponent,
     CommonModule,
-    ButtonModule,
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'

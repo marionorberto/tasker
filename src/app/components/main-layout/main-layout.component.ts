@@ -1,59 +1,54 @@
-import { AfterViewInit, Component, ComponentRef, ElementRef, ViewChild } from '@angular/core';
-import { RouterLinkActive } from '@angular/router';
-import { ModalSmallComponent } from "../modal-small/modal-small.component";
-import { ButtonModule } from 'primeng/button';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { TaskComponent } from "../task/task.component";
 import { TodayTaskComponent } from "../today-task/today-task.component";
 import { YesterdayTaskComponent } from "../yesterday-task/yesterday-task.component";
-import { CalendarModule } from 'primeng/calendar';
-import { FormsModule } from '@angular/forms';
-import { TaskComponent } from "../task/task.component";
+import { ModalTestComponent } from '../modal-test/modal-test.component';
+
+import { MatDialog, MatDialogModule, MatDialogConfig} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main-layout',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    RouterLinkActive,
     FormsModule,
     CommonModule,
-    ModalSmallComponent,
     TodayTaskComponent,
     YesterdayTaskComponent,
-    ButtonModule,
-    CalendarModule,
-    TaskComponent
+    TaskComponent,
+    ModalTestComponent,
+    MatDialogModule,
 ],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css'
 })
 export class MainLayoutComponent  {
+  chosenDayTasks: string = 'today';
 
-  dataToModalTask: { visible: boolean, position: string } = { visible: false, position: ''};   
-  dateTasks: string[] = ['yesterday', 'today', 'any'] ;
-  chosenDayTasks: string = this.dateTasks[1];
-  dateCalendar: string = '04/10/24';
-  taskComponentRef!: ComponentRef<TaskComponent>
-
-  @ViewChild('inputCalendar', { static: false }) inputDate!: ElementRef;
-
-  handleCreateTask(visible: boolean) {
-    this.dataToModalTask.visible = visible;
-  }
+  constructor(private dialog: MatDialog) {}
 
   handleChosenDateTask(day: string) {
     this.chosenDayTasks = day;
   }
 
-  onDateChange(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    const selectedDate = inputElement.value;
-    console.log('Selected Date:', selectedDate);
-  }
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+        id: 1,
+        title: 'Angular For Beginners'
+    };
 
-  destroyTask() {
-    if(this.taskComponentRef)
-    this.taskComponentRef.destroy();
+    const dialogRef = this.dialog.open(ModalTestComponent, dialogConfig);
 
-    console.log('333');
+     dialogRef.afterClosed().subscribe(
+        data => console.log("Dialog output:", data)
+    );    
   }
 }
