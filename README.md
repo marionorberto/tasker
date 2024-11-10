@@ -136,7 +136,7 @@ Distributed under the MIT License.
 
 ## Contact
 
-Mário Norberto - [@marionorberto](https://linkedin.com/in/marionorberto) - marionorberto2018@gmail.com
+Mário Norberto - [likedin.com/in/marionorberto](https://linkedin.com/in/marionorberto) - marionorberto2018@gmail.com
 
 Project Link: [https://github.com/marionorberto/tasker](https://github.com/marionorberto/tasker)
 
