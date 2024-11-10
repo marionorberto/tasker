@@ -1,0 +1,42 @@
+<div
+  class="bg-white relative border-zinc-100 shadow-sm p-4 rounded-md mb-2 border-spacing-16 border-2"
+>
+  <button
+    type="button"
+    class="btn-close absolute right-4 top-3"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
+  <h1 class="text-slate-600 text-xl font-bold">Your Task</h1>
+
+  <div class="mt-4 mb-1">
+    <div class="flex justify-between items-center">
+      <div>
+        <h1 class="font-bold text-[16px] opacity-80 text-xl">
+          This is the task title
+        </h1>
+        <p class="text-zinc-400 text-sm">
+          My content is this i hope this work as expec... My content is this i
+          hope this work as expec... this work as expec...
+        </p>
+      </div>
+
+      <div
+        (click)="handleCheckTaskClick()"
+        class="h-6 min-w-6 mt-3 border-[1px] border-slate-400 hover:shadow-md p-[1px] rounded-full flex justify-center items-center cursor-pointer"
+      >
+        <i
+          *ngIf="checked"
+          class="text-2xl cursor-pointer text-slate-600 material-icons flex justify-center items-center"
+          >check_circle</i
+        >
+      </div>
+    </div>
+    <div class="bg-zinc-100 w-full h-[1px] mb-3 mt-3">
+      <div class="flex justify-start items-center gap-1 mt-2">
+        <span class="text-zinc-400 text-sm font-semibold">Today</span>
+        <span class="text-zinc-300 text-[13px] mt-1">08:15 PM - 10:34 PM</span>
+      </div>
+    </div>
+  </div>
+</div>

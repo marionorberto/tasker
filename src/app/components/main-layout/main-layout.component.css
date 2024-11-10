@@ -1,5 +1,20 @@
 .nav-active {
   color: black;
   border-bottom: 3px solid black;
-  opacity: 80%;
+  opacity: 85%;
+}
+::ng-deep .ngb-datepicker {
+  opacity: 1 !important; /* Ensures full opacity */
+  transition: none !important; /* Disables any fading effect */
+  z-index: 1050 !important; /* 1050 is commonly used in Bootstrap modals */
+}
+
+.nav-active-task-filter {
+  color: #475569;
+  opacity: 85%;
+}
+
+.nav-active-task-filter-number {
+  color: #fff;
+  background-color: #475569;
 }

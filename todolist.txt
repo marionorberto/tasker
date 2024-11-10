@@ -5,3 +5,42 @@ pages:
 * specific day tasks list
 * login
 * register
+
+
+Para uma modal de **Settings** em um app de **To-Do Tasks**, você pode incluir várias configurações que melhoram a experiência do usuário. Aqui estão algumas ideias:
+
+### 1. **Configurações de Aparência**
+   - **Tema**: Alternar entre tema claro e escuro.
+   - **Cor de destaque**: Permitir a escolha de uma cor de destaque para personalizar o app.
+   - **Fonte e Tamanho de Texto**: Ajustes para diferentes estilos e tamanhos de fonte.
+
+### 2. **Configurações de Notificações**
+   - **Ativar/Desativar Notificações**: Opção para receber ou silenciar notificações das tarefas.
+   - **Frequência de Notificações**: Configurar notificações diárias, semanais ou personalizadas.
+   - **Notificação para Tarefas Importantes**: Definir alertas específicos para tarefas marcadas como importantes.
+
+### 3. **Configurações de Tarefas**
+   - **Ordenação de Tarefas**: Escolher entre ordenar por data de criação, prioridade, ou nome.
+   - **Agrupamento de Tarefas**: Agrupar tarefas por dia, semana ou mês.
+   - **Mostrar Tarefas Concluídas**: Escolher se as tarefas concluídas devem ser ocultadas, mostradas ou arquivadas.
+
+### 4. **Integrações**
+   - **Sincronização com Calendário**: Integração com calendários como Google Calendar.
+   - **Sincronização em Nuvem**: Habilitar sincronização com serviços de nuvem para backup (ex. Google Drive, Dropbox).
+   - **Conexão com Assistente Pessoal**: Integrar com assistentes como Alexa ou Google Assistant para adicionar tarefas por voz.
+
+### 5. **Configurações de Prioridade e Categorias**
+   - **Definir Prioridade Padrão**: Escolher uma prioridade padrão para novas tarefas.
+   - **Categorias Personalizadas**: Opção para criar, editar ou excluir categorias para organização das tarefas.
+   - **Cores para Prioridade**: Escolher cores para diferentes níveis de prioridade (ex. alta, média, baixa).
+
+### 6. **Configurações de Data e Hora**
+   - **Formato de Data e Hora**: Permitir formatos diferentes (24h/12h, DD/MM/AAAA vs. MM/DD/AAAA).
+   - **Configuração de Fuso Horário**: Útil para usuários que viajam ou gerenciam tarefas em fusos diferentes.
+
+### 7. **Preferências de Conta (se houver login)**
+   - **Perfil do Usuário**: Editar informações como nome e e-mail.
+   - **Sincronização de Dados**: Controle sobre backup automático e sincronização de dados.
+   - **Gerenciamento de Sessão**: Opção para fazer logout de todas as sessões ou encerrar a conta.
+
+Essas configurações darão uma boa base para um app de tarefas personalizável e com uma excelente experiência de usuário.

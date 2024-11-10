@@ -1,54 +1,88 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HostListener} from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 
-import { TaskComponent } from "../task/task.component";
-import { TodayTaskComponent } from "../today-task/today-task.component";
-import { YesterdayTaskComponent } from "../yesterday-task/yesterday-task.component";
-import { ModalTestComponent } from '../modal-test/modal-test.component';
 
-import { MatDialog, MatDialogModule, MatDialogConfig} from '@angular/material/dialog';
+import { TaskComponent } from "../task/task.component";
+import { ModalSettingsContentComponent } from '../modal-settings-content/modal-settings-content.component';
+import { ModalCreateTaskContentComponent } from '../modal-create-task-content/modal-create-task-content.component';
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDatapickerComponent } from '../modal-datapicker/modal-datapicker.component';
+import { TaskService } from '../../services/task.service';
+import { ModalTasksListComponent } from '../tasks-list/tasks-list.component';
+import { LogoutComponent } from '../logout/logout.component';
 
 @Component({
   selector: 'app-main-layout',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FormsModule,
     CommonModule,
-    TodayTaskComponent,
-    YesterdayTaskComponent,
     TaskComponent,
-    ModalTestComponent,
-    MatDialogModule,
+    FormsModule,
+    LogoutComponent,
 ],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css'
 })
 export class MainLayoutComponent  {
   chosenDayTasks: string = 'today';
+  chosenFilterNavegations: string = 'all'; 
+  tasksForRender = Array.from([1]);
 
-  constructor(private dialog: MatDialog) {}
+  currentScroll: number = 0;
+  showComponent: boolean = false;
+  scrollLimit: number = 0;
+  tasksNumber: number = 4;
 
-  handleChosenDateTask(day: string) {
+  constructor(private modalService: NgbModal, private taskService: TaskService) {
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    console.log(this.currentScroll);
+    this.currentScroll = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    this.scrollLimit = 200;
+    this.showComponent = this.currentScroll > this.scrollLimit;
+
+    
+    if (this.showComponent && this.tasksNumber > 2 ) {
+        window.scrollTo({
+          behavior: 'smooth',
+          top: 0,
+        });
+      this.modalService.open(ModalTasksListComponent);     
+      this.showComponent = false;
+    }
+  }
+
+  handlechosenFilterNavegations(value: string) {
+    this.chosenFilterNavegations = value;
+  }
+
+  handleChosenDayTasks(day: string) {
     this.chosenDayTasks = day;
   }
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-        id: 1,
-        title: 'Angular For Beginners'
-    };
+  openModal(type: string) {
+    let modalRef;
 
-    const dialogRef = this.dialog.open(ModalTestComponent, dialogConfig);
+    if (type === 'settings') {
+      modalRef = this.modalService.open(ModalSettingsContentComponent);
+    } else if (type === 'create-task') {
+      modalRef = this.modalService.open(ModalCreateTaskContentComponent);     
+      modalRef.componentInstance.parentComponent = this;
+    } else if (type === 'show-datapicker') {
+      modalRef = this.modalService.open(ModalDatapickerComponent);
+      modalRef.componentInstance.title = 'Get Tasks by specific date'
+    } 
+  }
 
-     dialogRef.afterClosed().subscribe(
-        data => console.log("Dialog output:", data)
-    );    
+  addNewTask() {
+    this.tasksForRender.length++;
   }
 }

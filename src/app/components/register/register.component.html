@@ -1,0 +1,81 @@
+<section
+  style="
+    background: linear-gradient(
+      113.3deg,
+      rgb(112, 174, 190) -1.8%,
+      rgb(60, 80, 115) 86.4%
+    );
+  "
+  class="login-img-bg h-screen w-screen flex flex-col justify-center items-center"
+>
+  <form
+    action="/tasker/login"
+    method="post"
+    class="p-3 px-4 w-96 bg-white rounded-sm shadow-lg flex flex-col gap-4"
+  >
+    <h1 class="text-xl text-start font-bold text-zinc-300">Sign Up</h1>
+    <div class="w-full flex flex-col">
+      <input
+        type="text"
+        id="email"
+        name="email"
+        class="border-b-[1px] border-zinc-300 p-1 text-zinc-500"
+        placeholder="E-mail"
+      />
+    </div>
+    <div class="relative w-full flex flex-col">
+      <input
+        type="{{ visiblePassword ? 'text' : 'password' }}"
+        id="password"
+        name="password"
+        class="border-b-[1px] border-zinc-300 p-1 pb-2 text-zinc-500 {{
+          visiblePassword ? '' : 'text-base'
+        }}"
+        placeholder="Password"
+      />
+      <i
+        (click)="togglePassword()"
+        class="tiny material-icons text-zinc-300 text-[22px] cursor-pointer absolute right-1 top-2"
+        >{{ visiblePassword ? "visibility" : "visibility_off" }}</i
+      >
+    </div>
+    <div class="relative w-full flex flex-col">
+      <input
+        type="{{ visibleRepeatPassword ? 'text' : 'password' }}"
+        id="repeatPassword"
+        name="repeatPassword"
+        class="border-b-[1px] border-zinc-300 p-1 pb-2 text-zinc-500 {{
+          visibleRepeatPassword ? '' : 'text-base'
+        }}"
+        placeholder="Repeat Password"
+      />
+      <i
+        (click)="toggleRepeatPassword()"
+        class="tiny material-icons text-zinc-300 text-[22px] cursor-pointer absolute right-1 top-2"
+        >{{ visibleRepeatPassword ? "visibility" : "visibility_off" }}</i
+      >
+    </div>
+    <button
+      type="submit"
+      class="w-full p-3 bg-slate-700 hover:bg-slate-800 rounded-sm text-white hover:shadow-sm"
+    >
+      submit
+    </button>
+  </form>
+
+  <div
+    class="py-2 px-4 w-96 bg-white rounded-sm shadow-lg flex flex-col gap-2 mt-5"
+  >
+    <h1
+      class="text-lg text-start font-bold text-zinc-300 flex justify-start items-center gap-2"
+    >
+      <span class="text-slate-200 text-sm">Or |</span> Sign In
+    </h1>
+    <a
+      routerLink="/tasker/login"
+      class="text-slate-700 hover:text-slate-800 text-lg font-bold text-center cursor-pointer bg-slate-50 hover:bg-slate-100 flex justify-center items-center"
+    >
+      Login in your Account
+    </a>
+  </div>
+</section>

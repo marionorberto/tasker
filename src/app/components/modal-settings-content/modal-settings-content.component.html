@@ -1,0 +1,116 @@
+<div
+  class="bg-white relative border-zinc-100 shadow-sm p-4 rounded-md mb-2 border-spacing-16 border-2"
+>
+  <button
+    type="button"
+    class="btn-close absolute right-4 top-3"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
+  <div>
+    <h1 class="text-slate-600 text-xl font-bold">Tasks Settings</h1>
+  </div>
+  <section class="flex flex-col justify-center items-start gap-3 mt-2">
+    <div class="flex justify-start items-center gap-3">
+      <h4 class="text-zinc-400">Order Tasks By:</h4>
+      <select name="" id="" class="bg-slate-100 rounded-sm p-1">
+        <option value="">Date</option>
+        <option value="">Pending tasks</option>
+        <option value="">Done tasks</option>
+        <option value="">Arquived tasks</option>
+        <option value="">All tasks</option>
+      </select>
+    </div>
+    <div class="flex justify-start gap-2 items-center">
+      <h4 class="text-zinc-400">Confirming On Deleting Task:</h4>
+      <input
+        type="checkbox"
+        checked
+        name="allowExcludeTask"
+        id="allowExcludeTask"
+        class="cursor-pointer accent-slate-600"
+      />
+    </div>
+    <div class="flex justify-start gap-2 items-center">
+      <div>
+        <h4 class="text-zinc-400">
+          Auto Clean Tasks:
+          <input
+            type="checkbox"
+            class="accent-slate-600 h-3 w-3"
+            name=""
+            id=""
+          />
+        </h4>
+        <span class="text-sm text-zinc-400"
+          >Clean all tasks after 30 days.</span
+        >
+      </div>
+    </div>
+    <div>
+      <h4 class="text-zinc-400">Standard Filter Config:</h4>
+      <span class="text-zinc-400 text-sm">
+        Choose exhibited filter by standard on opening app.</span
+      >
+      <div class="flex flex-col mt-1">
+        <div class="flex justify-start items-center gap-3">
+          <input
+            type="radio"
+            name="filterStandart"
+            id=""
+            class="accent-slate-600"
+            checked
+          />
+          <span class="text-zinc-300 text-sm">Show pending</span>
+        </div>
+        <div class="flex justify-start items-center gap-3">
+          <input
+            type="radio"
+            name="filterStandart"
+            class="accent-slate-600"
+            id=""
+          />
+          <span class="text-zinc-300 text-sm">Show Favorites</span>
+        </div>
+      </div>
+      <span class="mt-6 mb-3 text-zinc-300 text-sm">Day</span>
+      <div class="flex flex-col">
+        <div class="flex justify-start items-center gap-3">
+          <input
+            type="radio"
+            name="dayfilterStandard"
+            id=""
+            class="accent-slate-600"
+            checked
+          />
+          <span class="text-zinc-300 text-sm">Today</span>
+        </div>
+        <div class="flex justify-start items-center gap-3">
+          <input
+            type="radio"
+            name="dayfilterStandard"
+            class="accent-slate-600"
+            id=""
+          />
+          <span class="text-zinc-300 text-sm">Yesterday</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-footer mt-3 flex justify-center items-center">
+    <div class="mt-1 flex justify-center items-center gap-3 self-center">
+      <button
+        (click)="activeModal.dismiss('Cross click')"
+        class="text-sm bg-slate-100 rounded-md p-4 py-2 gap-0 text-slate-600 font-semibold hover:bg-slate-200 hover:shadow-md"
+      >
+        Cancel
+      </button>
+      <button
+        class="text-sm bg-slate-600 rounded-md p-4 py-2 gap-0 text-white font-semibold hover:shadow-md hover:bg-slate-700"
+      >
+        Save <i class="bi bi-send text-white"></i>
+      </button>
+    </div>
+  </div>
+</div>
