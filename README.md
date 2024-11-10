@@ -98,8 +98,7 @@ The main use of this web app is to create tasks and consulting them.
 
 * Create New Tasks:
 
-<img src='./src/assets/images/create-tasks.png
-' />
+<img src='./src/assets/images/create-tasks.png'/>
 
 
 * Remove Taskes:
