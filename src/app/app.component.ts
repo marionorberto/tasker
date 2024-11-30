@@ -2,6 +2,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { LoadingComponent } from './components/loading/loading.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { LoadingComponent } from './components/loading/loading.component';
   imports: [
     RouterOutlet,
     CommonModule,
-    LoadingComponent
+    LoadingComponent,
+    HttpClientModule,
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

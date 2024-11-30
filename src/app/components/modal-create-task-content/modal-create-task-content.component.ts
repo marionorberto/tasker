@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, HostListener, inject, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TaskService } from '../../services/task.service';
 import { FormsModule } from '@angular/forms';
@@ -15,11 +15,19 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './modal-create-task-content.component.css'
 })
 export class ModalCreateTaskContentComponent {
+  
   activeModal = inject(NgbActiveModal);
   @Input() parentComponent: any;
   title: string = '';
-  content: string = '';
+  content?: string = '';
   errors: string[] = [];
+
+  @HostListener('keydown', ['$event'])
+  handleKeydown(event: KeyboardEvent) {
+    if(event.key == 'Enter') {
+      this.createNewTask();
+    }
+  }
 
   constructor(private taskService: TaskService) {}
 
@@ -28,6 +36,12 @@ export class ModalCreateTaskContentComponent {
     setTimeout(() => {}, 2000);
 
     this.parentComponent.addNewTask();
-    console.log(this.taskService.createTask({title: this.title, content: this.content}));
+
+    if(!this.title) return;
+
+    this.taskService.createTask({
+      title: this.title,
+      content: this.content || undefined,
+    })
   }
 }

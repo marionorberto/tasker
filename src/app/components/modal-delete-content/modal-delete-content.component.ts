@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, HostListener, inject, Input } from '@angular/core';
 
 import  { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,10 +14,16 @@ import  { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalDeleteContentComponent {
   activeModal = inject(NgbActiveModal);
+  @HostListener('keydown', ['$event'])
+  handleKeydown(event: KeyboardEvent) {
+    if(event.key == 'Enter') {
+      this.dismiss();
+    }
+  }
 
   @Input() parentComponent: any;
 
-  showParentInfo() {
+  dismiss() {
     this.activeModal.dismiss();
     this.parentComponent.removeSelf();
   }

@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
-
+import { UserDataInterface } from '../interfaces/interfaces';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService {
 
+export class TaskService {
   constructor() { }
 
   AllTasks() {}
 
-  createTask(body: { title: string, content: string }) {
-    return {
-      title: body.title,
-      content:  body.content,
-    }
+  createTask(body: { title: string, content: string | undefined }) {
+    // persit task:
+    
+
   }
 
   taskById(idTask: string) {}
@@ -25,4 +24,8 @@ export class TaskService {
   taskFiltered(filter: string) {}
 
   taskByDate(date: Date) {}
+
+  login(loginData: UserDataInterface) {
+    console.log({ username: loginData.username, password: loginData.password })
+  } 
 }
